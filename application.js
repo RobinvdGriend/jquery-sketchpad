@@ -2,13 +2,16 @@ var createGrid = function() {
   var $container = $("#container");
   $container.append("<table>")
 
+  var $table = $("table");
+
   //Creates every table row
   for(i = 0; i < 16; i++) {
-    $container.append("<tr>");
+    $table.append("<tr>");
+    var $tableRow = $("tr").last();
 
     //Creates every table cell
     for(j = 0; j < 16; j++) {
-      $container.append("<td></td>");
+      $tableRow.append("<td></td>");
 
     };
     //Closes every table row
