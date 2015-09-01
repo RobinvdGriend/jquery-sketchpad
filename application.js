@@ -1,16 +1,22 @@
-var createGrid = function() {
-  var $container = $("#container");
-  $container.append("<table>")
+//Create container object outside of function for performance
+var $container = $("#container");
 
+var createGrid = function() {
+  var gridSize = Number(prompt("Please enter a gridsize (e.g. \"64\")."))
+
+  //Clear grid before creating a new one
+  $container.find("table").remove();
+
+  $container.append("<table>")
   var $table = $("table");
 
   //Creates every table row
-  for(i = 0; i < 16; i++) {
+  for(i = 0; i < gridSize; i++) {
     $table.append("<tr>");
     var $tableRow = $("tr").last();
 
     //Creates every table cell
-    for(j = 0; j < 16; j++) {
+    for(j = 0; j < gridSize; j++) {
       $tableRow.append("<td></td>");
 
     };
@@ -28,5 +34,6 @@ var colorCell = function() {
 
 $("document").ready(function(){
   createGrid();
-  $("td").on("mouseenter", colorCell);
+  $(document).on("mouseenter", "td", colorCell);
+  $(document).on("click", "#reset", createGrid);
 });
